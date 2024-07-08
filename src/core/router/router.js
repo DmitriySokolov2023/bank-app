@@ -1,3 +1,4 @@
+import { Layout } from '@/components/layout/layuot.component'
 import { NotFound } from '@/components/screens/not-found/not-found.component'
 
 import { ROUTES } from './routes.data'
@@ -5,6 +6,7 @@ import { ROUTES } from './routes.data'
 export class Router {
 	#routes
 	#currentRoute
+	#layout = null
 	constructor() {
 		this.#routes = ROUTES
 		this.#currentRoute = null
@@ -24,11 +26,20 @@ export class Router {
 			}
 		}
 		this.#currentRoute = route
-		this.render()
+		this.#render()
 	}
-	render() {
+	#render() {
 		const component = new this.#currentRoute.component()
 
-		document.getElementById('app').innerHTML = component.render()
+		if (!this.#layout) {
+			this.#layout = new Layout({
+				router: this,
+				children: component.render()
+			})
+		} else {
+			document.querySelector('main').innerHTML = component.render()
+		}
+
+		document.getElementById('app').innerHTML = this.#layout.render()
 	}
 }
