@@ -5,9 +5,15 @@ export class Layout {
 	}
 
 	render() {
-		const header = '<header>Header</header>'
+		const headerHTML = `<header>
+			<nav>
+				<a href="/about-us">About Us</a>
+				<a href="/auth">Auth</a>
+				<a href="/">Home</a>
+			</nav>
+		</header>`
 		return `
-			${header}
+			${headerHTML}
 			<main>${this.children}</main>
 			
 		`

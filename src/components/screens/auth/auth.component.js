@@ -1,5 +1,5 @@
 export class Auth {
 	render() {
-		return '<p>Home</p>'
+		return '<p>Auth</p>'
 	}
 }
