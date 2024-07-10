@@ -1,3 +1,5 @@
+import renderService from '@/core/services/render.service'
+
 export class Layout {
 	constructor({ router, children }) {
 		this.router = router
@@ -5,13 +7,7 @@ export class Layout {
 	}
 
 	render() {
-		const headerHTML = `<header>
-			<nav>
-				<a href="/about-us">About Us</a>
-				<a href="/auth">Auth</a>
-				<a href="/">Home</a>
-			</nav>
-		</header>`
+		const headerHTML = renderService.htmlToElement()
 		return `
 			${headerHTML}
 			<main>${this.children}</main>

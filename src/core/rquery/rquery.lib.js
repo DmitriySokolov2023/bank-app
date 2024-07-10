@@ -5,12 +5,12 @@ class RQuery {
 			console.log(this.element)
 			if (!this.element) {
 				throw new Error(`Element ${selector} not found!`)
-			} else if (selector instanceof HTMLElement) {
-				this.element = selector
-				console.log(this.element)
-			} else {
-				throw new Error('Invalid selector type')
 			}
+		} else if (selector instanceof HTMLElement) {
+			this.element = selector
+			console.log(this.element)
+		} else {
+			throw new Error('Invalid selector type')
 		}
 	}
 
@@ -27,7 +27,17 @@ class RQuery {
 			throw new Error('property and value must be string')
 		}
 		this.element.style[property] = value
-		return console.log(this)
+		return this
+	}
+	append(childElement) {
+		this.element.appendChild(childElement)
+		return this
+	}
+	before(newElement){
+		if(!(newElement instanceof HTMLElement)){
+			throw new Error('Element must be an HTMLElement')
+		}
+		
 	}
 }
 

@@ -1,6 +1,8 @@
 import { Layout } from '@/components/layout/layout.component'
 import { NotFound } from '@/components/screens/not-found/not-found.component'
 
+import { $R } from '../rquery/rquery.lib'
+
 import { ROUTES } from './routes.data'
 
 export class Router {
@@ -61,7 +63,8 @@ export class Router {
 				router: this,
 				children: component.render()
 			})
-			document.getElementById('app').innerHTML = this.#layout.render()
+			$R('#app').innerHTML = this.#layout.render()
+			// document.getElementById('app').innerHTML
 		} else {
 			document.querySelector('main').innerHTML = component.render()
 		}
